@@ -49,6 +49,10 @@ class RmlCanvas(object):
                 if n.localName == 'pageNumber':
                     counting_from = utils.tuple_int_get(n, 'countingFrom', default=[0])[0]
                     rc += str(self.canvas.getPageNumber() + counting_from)
+                if n.localName == 'pageNumberRel':
+                    counting_from = utils.tuple_int_get(n, 'countingFrom', default=[0])[0]
+                    fromAttr = n.attributes.getNamedItem('from')
+                    rc += str(self.canvas.getPageNumber() + counting_from + int(fromAttr.value if fromAttr else '0'))
             elif n.nodeType == node.CDATA_SECTION_NODE:
                 rc += n.data
             elif n.nodeType == node.TEXT_NODE:

@@ -34,3 +34,14 @@ context = Context(data)
 xmlstring = template.render(context)
 pdfstr = trml2pdf.parseString(xmlstring)
 ```
+
+## UPDATES
+
+This fork supports extra-tag
+
+```
+<pageNumberRel from="{{ START_PAGE }}"/>
+```
+
+It can be used when you need to start pagination from defined value, not from first.
+If attr "from" not provided, tag works as typical `<pageNumber/>`
